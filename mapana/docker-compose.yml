@@ -21,6 +21,7 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
+      - /Users/mateovergara/Documents/Talavera_Solutions_Test:/data
     depends_on:
       - postgres
     environment:
