@@ -1,6 +1,6 @@
 import csv
 from django.core.management.base import BaseCommand
-from ingestion.models import Department, Product
+from ingestion.models import Department, Product, Aisle, Order, OrderProduct
 
 class Command(BaseCommand):
     help = 'Command for importing data from a CSV file'
@@ -79,10 +79,16 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         csv_file = options['order_products_csv']
+        max_rows = 500000
+        row_count = 0
+
         with open(csv_file, 'r') as file:
             reader = csv.DictReader(file)
 
             for row in reader:
+                if row_count >= max_rows:
+                    break
+
                 try:
                     model_instance = Department(
                         product_name = row['product_name'],
@@ -98,14 +104,22 @@ class Command(BaseCommand):
                 except Exception as e:
                     self.stdout.write(self.style.ERROR(f"Error importing row {e}"))
 
+                row_count += 1
+
             self.stdout.write(self.style.SUCCESS(f"Data import completed"))
 
     def handle(self, *args, **options):
         csv_file = options['order_csv']
+        max_rows = 100000
+        row_count = 0
+
         with open(csv_file, 'r') as file:
             reader = csv.DictReader(file)
 
             for row in reader:
+                if row_count >= max_rows:
+                    break
+
                 try:
                     model_instance = Department(
                         order_id = row['order_id'],
@@ -124,5 +138,7 @@ class Command(BaseCommand):
                     )
                 except Exception as e:
                     self.stdout.write(self.style.ERROR(f"Error importing row {e}"))
+
+                row_count += 1
 
             self.stdout.write(self.style.SUCCESS(f"Data import completed"))
