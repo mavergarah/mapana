@@ -40,7 +40,7 @@ class Command(BaseCommand):
 
             for row in reader:
                 try:
-                    model_instance = Department(
+                    model_instance = Product(
                         product_name = row['product_name'],
                         aisle_id = row['aisle_id'],
                         department_id = row['department_id'],
@@ -63,7 +63,7 @@ class Command(BaseCommand):
 
             for row in reader:
                 try:
-                    model_instance = Department(
+                    model_instance = Aisle(
                         aisle = row['aisle'],
                     )
                     model_instance.save()
@@ -90,7 +90,7 @@ class Command(BaseCommand):
                     break
 
                 try:
-                    model_instance = Department(
+                    model_instance = OrderProduct(
                         product_name = row['product_name'],
                         aisle_id = row['aisle_id'],
                         department_id = row['department_id']
@@ -121,7 +121,7 @@ class Command(BaseCommand):
                     break
 
                 try:
-                    model_instance = Department(
+                    model_instance = Order(
                         order_id = row['order_id'],
                         user_id = row['user_id'],
                         eval_set = row['eval_set'],
