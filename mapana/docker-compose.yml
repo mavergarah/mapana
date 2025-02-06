@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:12
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=N0m0r3L0v1ng
+      - POSTGRES_DB=mapana_database
+    ports:
+      - "5432:5432"
+
+  app:
+    image: mamba_web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_NAME=mapana_database
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=N0m0r3L0v1ng
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+
+volumes:
+  postgres_data:

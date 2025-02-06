@@ -76,11 +76,11 @@ WSGI_APPLICATION = 'mapana.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mapana_database',  # Data base created for this exercise
-        'USER': 'postgres',  # Local postgres User
-        'PASSWORD': 'N0m0r3L0v1ng',  # Local PostgreSQL Password
-        'HOST': 'localhost',
-        'PORT': '5433',
+        'NAME': 'mapana_database',  # Base de datos creada para este ejercicio
+        'USER': 'postgres',  # Usuario local de PostgreSQL
+        'PASSWORD': 'N0m0r3L0v1ng',  # Contraseña local de PostgreSQL
+        'HOST': 'postgres',
+        'PORT': '5432',
     }
 }
 
