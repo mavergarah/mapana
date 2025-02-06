@@ -75,11 +75,14 @@ WSGI_APPLICATION = 'mapana.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mapana_database',  # Data base created for this exercise
+        'USER': 'postgres',  # Local postgres User
+        'PASSWORD': 'N0m0r3L0v1ng',  # Local PostgreSQL Password
+        'HOST': 'localhost',
+        'PORT': '5433',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
