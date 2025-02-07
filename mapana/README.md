@@ -79,20 +79,3 @@ file as:
   '''
   http://127.0.0.1:8000/
   '''
-
-## 3.8. Docker image for your Project
-  If you want to make a docker image for your project please
-  run the next command
-  '''
-  docker build -t mammba_app .
-  '''
-
-  Then run the next command for docker-compose
-  '''
-  docker-compose up -d
-  '''
-
-  If you want to run migrations then you have to make:
-  '''
-  docker exec -it mapana-app-1 python manage.py migrate
-  '''

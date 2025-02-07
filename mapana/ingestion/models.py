@@ -6,10 +6,9 @@ class Department(models.Model):
         primary_key=True
     )
     department = models.CharField(
-        max_length=50,
+        max_length=100,
         verbose_name='department',
-        blank=False,
-        unique=True
+        blank=False
     )
 
     def __str__(self):
@@ -22,8 +21,7 @@ class Aisle(models.Model):
     aisle = models.CharField(
         max_length=50,
         verbose_name='aisle',
-        blank=False,
-        unique=True
+        blank=False
     )
 
     def __str__(self):
@@ -34,10 +32,9 @@ class Product(models.Model):
         primary_key=True
     )
     product_name = models.CharField(
-        max_length=50,
+        max_length=150,
         verbose_name='product_name',
-        blank=False,
-        unique=True
+        blank=False
     )
 
     aisle_id = models.ForeignKey(
@@ -51,21 +48,11 @@ class Product(models.Model):
     )
 
     def __str__(self):
-        return self.product_name
-
-class User(models.Model):
-    user_id = models.AutoField(
-        primary_key=True
-    )
-    def __str__(self):
-        return self.id
+        return self.product_id
 
 class Order(models.Model):
     order_id = models.IntegerField()
-    user_id = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE
-    )
+    user_id = models.IntegerField()
     eval_set = models.CharField(
         max_length=50,
         blank=False,
@@ -91,4 +78,4 @@ class OrderProduct(models.Model):
     reordered = models.IntegerField()
 
     def __str__(self):
-        return self.add_to_cart_order
+        return self.order_id

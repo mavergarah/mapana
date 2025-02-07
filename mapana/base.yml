@@ -1,0 +1,14 @@
+version: "2"
+services:
+  postgres:
+    image: postgres:12
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    image: mamba_web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    command: python manage.py runserver 0.0.0.0:8000
