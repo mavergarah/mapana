@@ -48,7 +48,7 @@ class Product(models.Model):
     )
 
     def __str__(self):
-        return self.product_id
+        return str(self.product_id)
 
 class Order(models.Model):
     order_id = models.IntegerField()
@@ -63,7 +63,7 @@ class Order(models.Model):
     days_since_prior_order = models.IntegerField()
 
     def __str__(self):
-        return self.order_id
+        return str(self.order_id)
 
 class OrderProduct(models.Model):
     order_id = models.ForeignKey(
@@ -78,4 +78,4 @@ class OrderProduct(models.Model):
     reordered = models.IntegerField()
 
     def __str__(self):
-        return self.order_id
+        return str(self.order_id)
