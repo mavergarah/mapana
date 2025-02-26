@@ -6,9 +6,8 @@ class Department(models.Model):
         primary_key=True
     )
     department = models.CharField(
-        max_length=100,
-        verbose_name='department',
-        blank=False
+        max_length=200,
+        verbose_name='department'
     )
 
     def __str__(self):
@@ -19,9 +18,8 @@ class Aisle(models.Model):
         primary_key=True
     )
     aisle = models.CharField(
-        max_length=50,
-        verbose_name='aisle',
-        blank=False
+        max_length=150,
+        verbose_name='aisle'
     )
 
     def __str__(self):
@@ -32,9 +30,8 @@ class Product(models.Model):
         primary_key=True
     )
     product_name = models.CharField(
-        max_length=150,
-        verbose_name='product_name',
-        blank=False
+        max_length=250,
+        verbose_name='product_name'
     )
 
     aisle_id = models.ForeignKey(
@@ -54,8 +51,7 @@ class Order(models.Model):
     order_id = models.IntegerField()
     user_id = models.IntegerField()
     eval_set = models.CharField(
-        max_length=50,
-        blank=False,
+        max_length=250,
     )
     order_number = models.IntegerField()
     order_dow = models.IntegerField()

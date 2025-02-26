@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ingestion',
     'rest_framework',
+    'pandas',
 ]
 
 MIDDLEWARE = [
