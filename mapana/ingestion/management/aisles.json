@@ -1,0 +1,16 @@
+{
+"name": "LoadAisles",
+"source": {
+"type": "csv",
+"path": "/data/instacart-market-basket-analysis/aisles.csv"
+},
+"destination": {
+"model": "ingestion.Aisle",
+"field_mapping": {
+  "aisle": "aisle"
+}
+},
+"error_handling": {
+  "strategy": "skip_row"
+}
+}

@@ -1,0 +1,45 @@
+{
+"name": "LoadProducts",
+"source": {
+"type": "csv",
+"path": "/data/instacart-market-basket-analysis/products.csv"
+},
+"transformations": [
+    {
+      "type": "map",
+      "field": "aisle_id",
+      "to": "aisle_name"
+    },
+    {
+      "type": "lookup",
+      "field": "aisle_name",
+      "lookup_source": "aisle",
+      "lookup_field": "aisle_id",
+      "to": "aisle_id"
+    },
+    {
+      "type": "map",
+      "field": "department_id",
+      "to": "department_name"
+    },
+    {
+      "type": "lookup",
+      "field": "department_name",
+      "lookup_source": "department",
+      "lookup_field": "department_id",
+      "to": "department_id"
+    }
+  ],
+"destination": {
+"model": "ingestion.Product",
+"field_mapping": {
+  "product_id": "product_id",
+  "product_name": "product_name",
+  "aisle_id": "aisle_id",
+  "department_id": "department_id"
+}
+},
+"error_handling": {
+  "strategy": "skip_row"
+}
+}

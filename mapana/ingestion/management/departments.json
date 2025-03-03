@@ -1,0 +1,16 @@
+{
+"name": "LoadDepartments",
+"source": {
+"type": "csv",
+"path": "/data/instacart-market-basket-analysis/departments.csv"
+},
+"destination": {
+"model": "ingestion.Department",
+"field_mapping": {
+  "department": "department"
+}
+},
+"error_handling": {
+  "strategy": "skip_row"
+}
+}
